@@ -11,7 +11,7 @@ resource "dbtcloud_job" "ci_job" {
   project_id               = dbtcloud_project.padraic_dbt_cloud_terraform_project.id
   run_generate_sources     = false
   triggers = {
-    "custom_branch_only" : true,
+    "custom_branch_only" : false, # This should be true but I don't have GitHub integrated with dbt Cloud so I can't set this
     "github_webhook" : true,
     "git_provider_webhook" : true,
     "schedule" : false
@@ -41,6 +41,6 @@ resource "dbtcloud_job" "daily_job" {
     "git_provider_webhook" : false,
     "schedule" : true
   }
-  schedule_cron = "0 2 * * *"
+  schedule_cron = "30 2 * * *"
   schedule_type = "custom_cron"
 }
