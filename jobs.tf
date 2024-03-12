@@ -30,7 +30,7 @@ resource "dbtcloud_job" "daily_job" {
   ]
   generate_docs        = true
   is_active            = true
-  name                 = "Daily job"
+  name                 = "Daily Job"
   num_threads          = 8
   project_id           = dbtcloud_project.padraic_dbt_cloud_terraform_project.id
   run_generate_sources = true
