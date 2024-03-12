@@ -24,6 +24,7 @@ resource "dbtcloud_job" "ci_job" {
 
 resource "dbtcloud_job" "daily_job" {
   dbt_version    = var.dbt_version
+  description    = "Runs `dbt build` at 2:30 am on weekdays."
   environment_id = dbtcloud_environment.prod_environment.environment_id
   execute_steps = [
     "dbt build"
@@ -41,6 +42,6 @@ resource "dbtcloud_job" "daily_job" {
     "git_provider_webhook" : false,
     "schedule" : true
   }
-  schedule_cron = "30 2 * * *"
+  schedule_cron = "30 2 * * 1-5"
   schedule_type = "custom_cron"
 }
