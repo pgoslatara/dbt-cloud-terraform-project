@@ -18,3 +18,9 @@ provider "dbtcloud" {
 provider "github" {
   token = var.github_token
 }
+
+provider "google" {
+  project = "padraic-slattery-sndbx-o"
+  region  = "europe-west4"
+  zone    = "europe-west4-c"
+}

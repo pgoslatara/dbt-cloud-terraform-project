@@ -1,7 +1,7 @@
-name: ci_pipeline
+name: cd_pipeline
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
@@ -23,7 +23,7 @@ env:
     TF_VAR_token_uri: ${{ secrets.TF_VAR_token_uri }}
 
 jobs:
-  ci_pipeline:
+  cd_pipeline:
     permissions:
       contents: read
       pull-requests: write
@@ -52,7 +52,7 @@ jobs:
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-      - name: Run `terraform plan`
-        run: tfcmt plan -- terraform plan
+      - name: Run `terraform apply`
+        run: tfcmt plan -- terraform apply -auto-approve
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
