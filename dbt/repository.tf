@@ -4,7 +4,7 @@ resource "dbtcloud_repository" "padraic_dbt_cloud_terraform_project" {
   git_clone_strategy = "deploy_key"
 }
 
-# terraform import github_repository.padraic_dbt_cloud_terraform_project dbt-cloud-terraform-project
+# terraform import github_repository.padraic_module.dbt.dbt_cloud_terraform_project dbt-cloud-terraform-project
 resource "github_repository" "padraic_dbt_cloud_terraform_project" {
   name = "dbt-cloud-terraform-project"
 }
